@@ -11,10 +11,10 @@ skinparam linetype ortho
 enum NivelDificultad {
   FACIL
   MEDIO
-  DIFICI L
+  DIFICIL
 }
 
-' ==========================================
+' ==========================================  
 ' JERARQUÍA DE PERSONAJES Y VILLANOS
 ' ==========================================
 abstract class Personaje <<abstract>> {
@@ -120,6 +120,7 @@ class Mision {
   - id: String
   - estado: String = "activa"
   - recompensa: Integer
+  - errores: Integer = 0
   + consultarEstado(): String
   + procesarIntento(respuesta: String): Boolean
   + completar(): void
@@ -140,4 +141,4 @@ Heroe "0..*" -right-> "1" Ayudante : pide ayuda >
 Villano "1" -down-> "1..*" Reto : altera / complica >
 Batman "1" ..> "0..*" Partida : juega >
 
-@endl
+@enduml

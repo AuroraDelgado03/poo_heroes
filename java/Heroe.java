@@ -1,4 +1,4 @@
-public class Heroe extends Personaje {
+public abstract class Heroe extends Personaje {
     protected int saldo;
     protected int intentosRestantes;
 

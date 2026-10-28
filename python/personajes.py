@@ -66,7 +66,7 @@ class GreenGoblin(Villano):
 
 
 class Pista:
-    def _init_(self, texto: str, precio: int):
+    def __init__(self, texto: str, precio: int):
         self.__texto: str = texto
         self.__precio: int = precio
 
@@ -77,17 +77,16 @@ class Pista:
 class Ayudante(Personaje, ABC):
     def __init__(self, nombre: str, costo_pista: int):
         super().__init__(nombre)
-        self._costo_pista = int = costo_pista
+        self._costo_pista = costo_pista
 
     @abstractmethod
     def dar_pista(self, m: Mision) -> str:
         pass
 
 class Alfred(Ayudante):
-    def _init_(self, nombre: str, costo_pista: int, pistas_iniciales: List[Pista] = None):
-        super()._init_(nombre, costo_pista)
-        self.__pistas: List[Pista] = pistas_iniciales
-
+    def __init__(self, nombre: str, costo_pista: int, pistas_iniciales: List[Pista] = None):
+        super().__init__(nombre, costo_pista)
+        self.__pistas: List[Pista] = pistas_iniciales if pistas_iniciales else []
 
     def dar_pista(self, m: Mision) -> str:
         if self.__pistas:
@@ -96,6 +95,6 @@ class Alfred(Ayudante):
 
     def obtener_pista(self, i: int) -> str:
         try:
-            return self.__pistas[i].contenido
+            return self.__pistas[i].getTexto() 
         except IndexError:
             return "Índice de pista no válido."

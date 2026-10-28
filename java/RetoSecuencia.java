@@ -9,12 +9,12 @@ public class RetoSecuencia extends Reto {
 
     @Override
     public boolean evaluarRespuesta(String respuesta) {
-        // TODO: Implementar la lógica para validar la respuesta del alumno
+        
         return false;
     }
 
     @Override
     public void generarProblema() {
-        // TODO: Generar patrón numérico según el nivel de dificultad
+       
     }
 }

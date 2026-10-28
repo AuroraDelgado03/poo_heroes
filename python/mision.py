@@ -6,12 +6,20 @@ class Mision:
         self.reto = reto
         self.estado = "activa"
         self.pistas = []
+        self.errores = 0  
 
     def procesar_intento(self, respuesta: str) -> bool:
+        if self.estado == "bloqueada":
+            return False
+            
         if self.reto.evaluar_respuesta(respuesta):
             self.completar()
             return True
-        return False
+        else:
+            self.errores += 1
+            if self.errores >= 3:
+                self.estado = "bloqueada"
+            return False
 
     def completar(self) -> None:
         self.estado = "completada"
